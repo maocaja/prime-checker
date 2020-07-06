@@ -1,27 +1,34 @@
 package test.com.primechecker;
 
-import main.com.primechecker.PrimeChecker;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+
+import main.com.primechecker.PrimeSieve;
 import org.junit.Test;
 
 public class PrimeCheckerTest {
 
     @Test
-    public void whenNumbers2To4_thenThereAreTwoPrimes2And3() {
-        int limit = 4;
-        int[] expectedPrimes = {2, 3};
-        int[] primes = new PrimeChecker(limit).searchPrimes();
-
-        assertThat(primes, is(expectedPrimes));
+    public void whenNumberIs3_thenIsPrime() {
+        assertThat(new PrimeSieve().isPrime(3), is(true));
+    }
+    @Test
+    public void whenNumberIs5_thenIsPrime() {
+        assertThat(new PrimeSieve().isPrime(5), is(true));
     }
 
     @Test
-    public void whenNumbers5Until20_thenThereAre5() {
-        int limit = 20;
-        int[] expectedPrimes = {2, 3, 5, 7, 11, 13, 17, 19};
-        int[] primes = new PrimeChecker(limit).searchPrimes();
-        assertThat(primes, is(expectedPrimes));
+    public void whenNumberIs21_thenIsNotPrime() {
+        assertThat(new PrimeSieve().isPrime(21), is(false));
     }
 
+    @Test
+    public void whenNumberIs100_thenIsNotPrime() {
+        assertThat(new PrimeSieve().isPrime(21), is(false));
+    }
+
+    @Test
+    public void whenNumberIs97_thenIsNotPrime() {
+        assertThat(new PrimeSieve().isPrime(97), is(true));
+    }
 }
