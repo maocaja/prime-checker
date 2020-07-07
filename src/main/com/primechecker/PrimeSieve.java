@@ -4,12 +4,12 @@ import utils.Operations;
 
 import java.util.Arrays;
 
-public class PrimeSieve implements PrimeChecker{
+public class PrimeSieve implements PrimeChecker {
 
     private static final int MAX_VALUE = 100;
-    private boolean [] sieve ;
+    private boolean[] sieve;
 
-    public PrimeSieve () {
+    public PrimeSieve() {
         createSieve();
         fillSieve();
         discardZeroAndOneNumbers();
@@ -20,7 +20,7 @@ public class PrimeSieve implements PrimeChecker{
         sieve = new boolean[MAX_VALUE + 1];
     }
 
-    private void fillSieve(){
+    private void fillSieve() {
         Arrays.fill(sieve, true);
     }
 
@@ -30,23 +30,25 @@ public class PrimeSieve implements PrimeChecker{
     }
 
     private void discardMultiples() {
-        for (int multipleOf = 0; multipleOf < sieve.length; ++ multipleOf  ){
-            if(isPrime(multipleOf))
+        for (int multipleOf = 0; multipleOf < sieve.length; ++multipleOf) {
+            if (isPrime(multipleOf)) {
                 discardMultiplesOf(multipleOf);
+            }
         }
     }
 
     private void discardMultiplesOf(int multipleOf) {
-        for (int number = multipleOf + 1; number < sieve.length; ++ number ){
-            if(Operations.isMultiple(number,multipleOf)){
+        for (int number = multipleOf + 1; number < sieve.length; ++number) {
+            if (Operations.isMultiple(number, multipleOf)) {
                 discard(number);
             }
         }
     }
 
-    private void discard(int number){
+    private void discard(int number) {
         sieve[number] = false;
     }
+
     @Override
     public boolean isPrime(int number) {
         return sieve[number];
