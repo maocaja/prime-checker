@@ -32,11 +32,11 @@ public class PrimeSieve implements PrimeChecker{
     private void discardMultiples() {
         for (int multipleOf = 0; multipleOf < sieve.length; ++ multipleOf  ){
             if(isPrime(multipleOf))
-                validateMultiples(multipleOf);
+                discardMultiplesOf(multipleOf);
         }
     }
 
-    private void validateMultiples(int multipleOf) {
+    private void discardMultiplesOf(int multipleOf) {
         for (int number = multipleOf + 1; number < sieve.length; ++ number ){
             if(Operations.isMultiple(number,multipleOf)){
                 discard(number);
