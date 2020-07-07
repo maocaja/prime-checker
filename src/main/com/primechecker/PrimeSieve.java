@@ -11,12 +11,16 @@ public class PrimeSieve implements PrimeChecker{
 
     public PrimeSieve () {
         createSieve();
+        fillSieve();
         discardZeroAndOneNumbers();
         discardMultiples();
     }
 
     private void createSieve() {
         sieve = new boolean[MAX_VALUE + 1];
+    }
+
+    private void fillSieve(){
         Arrays.fill(sieve, true);
     }
 
@@ -39,7 +43,7 @@ public class PrimeSieve implements PrimeChecker{
             }
         }
     }
-    
+
     private void discard(int number){
         sieve[number] = false;
     }
